@@ -1,0 +1,23 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Model files
+models/
+*.gguf
+
+# FAISS index
+faiss_index/
+
+# OS junk
+.DS_Store
+Thumbs.db
+# Ignore everything in docs except PDFs
+docs/*
+!docs/*.pdf

@@ -1,0 +1,25 @@
+go to customers in w5 QB -  go to Galaxy
+
+tranascacions invice  -  add all
+
+review and send 
+
+then creae a dispursement from Endigm
+
+I have to match bank transactions to bill
+
+
+Go to bank transactions -  hit match  -  dont do recive payent -  HIT POST
+
+ -  w5  -  make a bill  -  add bill for Endigm invoice 
+
+Bill no is Endigm invoice no.
+
+
+Then once paid  -  go vendors under Endigm.
+
+On w5  -  go to Expenses - vendors  -  open the one to be paid and select bottom righ save and schedule payment 
+
+
+
+- 

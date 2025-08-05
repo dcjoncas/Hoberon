@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oberon Local</title>
+    <style>
+      body {
+        font-family: Arial;
+        background: #1e1e1e;
+        color: #fff;
+      }
+      #chat-box {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 10px;
+        border: 1px solid #555;
+        height: 500px;
+        overflow-y: auto;
+        background: #2b2b2b;
+      }
+      .msg {
+        margin: 5px 0;
+      }
+      .user {
+        color: #4ec9b0;
+      }
+      .bot {
+        color: #dcdcaa;
+      }
+      #input-box {
+        display: flex;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        background: #3c3c3c;
+        color: #fff;
+      }
+      button {
+        padding: 10px;
+        border: none;
+        background: #007acc;
+        color: #fff;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #005f99;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center">🤖 Oberon Local Chat</h2>
+    <div id="chat-box"></div>
+    <div id="input-box">
+      <input
+        type="text"
+        id="question"
+        placeholder="Ask me something..."
+        onkeypress="if(event.keyCode==13) sendMessage()"
+      />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+    <script>
+      function sendMessage() {
+        let q = document.getElementById("question").value.trim();
+        if (!q) return;
+        let chat = document.getElementById("chat-box");
+        chat.innerHTML += `<div class='msg user'><b>You:</b> ${q}</div>`;
+        document.getElementById("question").value = "";
+        fetch("/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question: q }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            chat.innerHTML += `<div class='msg bot'><b>Oberon:</b> ${data.answer}</div>`;
+            chat.scrollTop = chat.scrollHeight;
+          });
+      }
+    </script>
+  </body>
+</html>
